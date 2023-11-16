@@ -3,12 +3,14 @@
 #include <string>
 
 #include "PersonInfo.h"
+#include "RegistrarEmployee.h"
 
 using namespace std;
 
 int main() {
 
 	PersonInfo person;
+	RegistrarEmployee employee;
 
 	string fName = person.getFName();
 	string lName = person.getLName();
@@ -46,15 +48,22 @@ int main() {
 	state = person.getState();
 	gender = person.getGender();
 
-	std::cout << fName << std::endl;
-	std::cout << lName << std::endl;
-	std::cout << email << std::endl;
-	std::cout << ssn << std::endl;
-	std::cout << address << std::endl;
-	std::cout << city << std::endl;
-	std::cout << state << std::endl;
-	std::cout << gender << std::endl;
+	employee.recieveFName(fName);
+	employee.recieveLName(lName);
+	employee.recieveEmail(email);
+	employee.recieveSSN(ssn);
+	employee.recieveAddress(address);
+	employee.recieveCity(city);
+	employee.recieveState(state);
+	employee.recieveGender(gender);
 
-
+	employee.sendFName();
+	employee.sendLName();
+	employee.sendEmail();
+	employee.sendSSN();
+	employee.sendAddress();
+	employee.sendCity();
+	employee.sendState();
+	employee.sendGender();
 
 }
