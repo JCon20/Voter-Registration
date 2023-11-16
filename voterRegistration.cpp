@@ -1,29 +1,138 @@
 #include <iostream>
 #include <stdlib.h>
 #include <string>
+#include <limits>
+
+using namespace std;
+
+class PersonInfo {
+public: 
+    string first_name, last_name, email, SSN, address, city, state, gender; 
+    string zipCode, street_address, fullName;
+};  // end PersonInfo class 
+
+class VoterSubmission: public PersonInfo{
+public: 
+    void provideID();
+    void updateInfo(); 
+        // send this info to voterData and updateRecords() in RegistrarEmployee    
+};
+
+void VoterSubmission::provideID(){ // Cout/Cin statements written by JC; ZC copy&pasted it, removed comments, and added under appropriate context to make it operable.
+  bool dataCorrect = false;
+  do {
+      cout << "Please enter your first name: \n";
+      getline(cin, first_name);
+      cout << "Please enter your last name: \n";
+      getline(cin, last_name);
+      cout << "Please enter your email: \n";
+      getline(cin, email);
+      cout << "Please enter your SSN: \n";
+      getline(cin, SSN);
+      cout << "Please enter your gender: \n";
+      getline(cin, gender);
+      cout << "Please enter your street address: \n";
+      getline(cin, street_address);
+      cout << "Please enter your city: \n";
+      getline(cin, city);
+      cout << "Please enter your state: \n";
+      getline(cin, state);
+      cout << "Please enter your zip code: \n";
+      getline(cin, zipCode);
+      fullName = first_name + " " + last_name;
+      cout << "Is the following information correct?\n" << fullName << "\n" << email << "\n" << SSN << "\n";
+      cout << gender << "\n" << street_address << "\n" << city << "\n" << state << "\n" << zipCode << "\n";
+      cout << "Please enter 1 for yes or 0 for no: \n";
+      cin >> dataCorrect; // Can maybe improve by selecting which info is wrong similar to updateInfo() so the user can select which info to fix?
+      cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // This is here cuz terminal gets mad if I don't.-ZC
+  } while (dataCorrect == false);
+  }
+
+void VoterSubmission::updateInfo(){ //full method written by ZC
+    string fullNameCheck;
+    int choice1;
+    int choice2 = 1;
+    string activeAccount;
+  
+    cout << "\nWhat is the name of the account you'd like to update: \n";
+    getline(cin, fullNameCheck);
+  do{
+    if (fullNameCheck == fullName){
+      cout << "\nWhich data would you like to change?\n1. " << first_name << "\n2. " << last_name << "\n3. ";
+      cout << email << "\n4. " << SSN << "\n5. " << gender << "\n6. " << street_address << "\n7. " << city; 
+      cout << "\n8. " << state << "\n9. " << zipCode << "\n";
+    }else{
+      cout << "That name is not in our system. Please try another name.\n";
+      updateInfo();
+      };
+    cin >> choice1;
+    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+  switch(choice1){
+    case 1:
+        cout << "Please enter your first name: \n";
+        getline(cin, first_name);
+        activeAccount = first_name + " " + last_name;
+        cout << "Your information has been updated\n";
+        break;
+    case 2:
+        cout << "Please enter your last name: \n";
+        getline(cin, last_name);
+        activeAccount = first_name + " " + last_name;
+        cout << "Your information has been updated\n";
+        break;
+    case 3:
+        cout << "Please enter your email: \n";
+        getline(cin, email);
+        cout << "Your information has been updated\n";
+        break;
+    case 4:
+        cout << "Please enter your SSN: \n";
+        getline(cin, SSN);
+        cout << "Your information has been updated\n";
+        break;
+    case 5:
+        cout << "Please enter your gender: \n";
+        getline(cin, gender);
+        cout << "Your information has been updated\n";
+        break;
+    case 6:
+        cout << "Please enter your street address: \n";
+        getline(cin, street_address);
+        cout << "Your information has been updated\n";
+        break;
+    case 7:
+        cout << "Please enter your city: \n";
+        getline(cin, city);
+        cout << "Your information has been updated\n";
+        break;
+    case 8:
+        cout << "Please enter your state: \n";
+        getline(cin, state);
+        cout << "Your information has been updated\n";
+        break;
+    case 9:
+        cout << "Please enter your zip code: \n";
+        getline(cin, zipCode);
+        cout << "Your information has been updated\n";
+        break;
+    default:
+        cout << "That is not a valid option. Please try again.\n";
+        updateInfo();
+        break;
+  }
+  cout << "\nWould you like to update another piece of information?\n1. Yes\n2. No\n";
+  cin >> choice2;
+  }while(choice2 == 1);
+  fullName = activeAccount;
+  }
 
 int main() 
 {
-    // std::cout << "Please enter your first name: \n";  
-    // std::cin >> first_name; 
-    // std::cout << "Please enter your last name: \n";
-    // std::cin >> last_name; 
-    // std::cout << "Please enter your email: \n"; 
-    // std::cin >> email; 
-    // std::cout << "Please enter your SSN: \n";
-    // std::cin >> SSN; 
-    // std::cout << "Please enter your gender: \n";
-    // std::cin >> gender; 
-    // std::cout << "Please enter your street address: \n";
-    // std::cin >> street_address; 
-    // std::cout << "Please enter your city: \n";
-    // std::cin >> city; 
-    // std::cout << "Please enter your state: \n";
-    // std::cin >> state; 
-    // std::cout << "Please enter your zip code: \n";
-    // std::cin >> zipCode; 
-
-    /********** Processes ***********/
+  VoterSubmission voter;  // We should consider the possibility of having multiple voters-ZC
+  voter.provideID(); // Testing method -ZC
+  voter.updateInfo(); // Testing method -ZC
+  
+  /********** Processes ***********/
 
     //std::cout << "Registration successful\n"; 
         // OR 
@@ -33,18 +142,6 @@ int main()
     /********** Registered voter variable 'registered' gets updated to the value true and program ends *****/
 } // end main() 
 
-class PersonInfo {
-private: 
-    std::string first_name, last_name, email, SSN, address, city, state, gender; // std::string zipCode, street_address 
-};  // end PersonInfo class 
-
-class VoterSubmission: public PersonInfo{
-private: 
-    void provideIdentification(); // void provideID(first_name, last_name, SSN, gender);
-    void updateInformation(); // will get the same info as in provideIDsend and provideAddress(), 
-        // then send this info to voterData and updateRecords() in RegistrarEmployee 
-    // void provideAddress(street_address, city, state, zipCode)   
-}; // end VoterSubmission class 
 
 class VoterData: public PersonInfo{
 private: 
