@@ -8,11 +8,53 @@ using namespace std;
 
 int main() {
 
-	modifyFName();
+	PersonInfo person;
 
-	string fName = getFName();
+	string fName = person.getFName();
+	string lName = person.getLName();
+	string email = person.getEmail();
+	string ssn = person.getSSN();
+	string address = person.getAddress();
+	string city = person.getCity();
+	string state = person.getState();
+	string gender = person.getGender();
 
 	std::cout << fName << std::endl;
+	std::cout << lName << std::endl;
+	std::cout << email << std::endl;
+	std::cout << ssn << std::endl;
+	std::cout << address << std::endl;
+	std::cout << city << std::endl;
+	std::cout << state << std::endl;
+	std::cout << gender << std::endl;
+
+	person.modifyFName();
+	person.modifyLName();
+	person.modifyEmail();
+	person.modifySSN();
+	person.modifyAddress();
+	person.modifyCity();
+	person.modifyState();
+	person.modifyGender();
+
+	fName = person.getFName();
+	lName = person.getLName();
+	email = person.getEmail();
+	ssn = person.getSSN();
+	address = person.getAddress();
+	city = person.getCity();
+	state = person.getState();
+	gender = person.getGender();
+
+	std::cout << fName << std::endl;
+	std::cout << lName << std::endl;
+	std::cout << email << std::endl;
+	std::cout << ssn << std::endl;
+	std::cout << address << std::endl;
+	std::cout << city << std::endl;
+	std::cout << state << std::endl;
+	std::cout << gender << std::endl;
+
 
 
 }
