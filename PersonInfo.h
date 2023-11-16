@@ -5,14 +5,14 @@ using namespace std;
 
 class PersonInfo {
 private:
-	string fName;
-	string lName;
-	string email;
-	string ssn;
-	string address;
-	string city;
-	string state;
-	string gender;
+	string fName = "No First Name";
+	string lName = "No Last Name";
+	string email = "No Email";
+	string ssn = "No Social Security Number";
+	string address = "No Address";
+	string city = "No City";
+	string state = "No State";
+	string gender = "No Gender";
 
 public:
 	PersonInfo();
