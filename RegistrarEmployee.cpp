@@ -14,74 +14,74 @@ RegistrarEmployee::~RegistrarEmployee() {
 
 }
 
-string RegistrarEmployee::sendFName() {
+string RegistrarEmployee::sendFName() { //Displays to user that data for fName was sent.
 	std::cout << "User First Name " << fName << " Sent" << std::endl;
 	return(fName);
 }
 
-string RegistrarEmployee::sendLName() {
+string RegistrarEmployee::sendLName() { //Displays to user that data for lName was sent.
 	std::cout << "User Last Name " << lName << " Sent" << std::endl;
 	return(lName);
 }
 
-string RegistrarEmployee::sendEmail() {
+string RegistrarEmployee::sendEmail() { //Displays to user that data for email was sent.
 	std::cout << "User Email " << email << " Sent" << std::endl;
 	return(email);
 }
 
-string RegistrarEmployee::sendSSN() {
+string RegistrarEmployee::sendSSN() { //Displays to user that data for ssn was sent.
 	std::cout << "User Social Security Number " << ssn << " Sent" << std::endl;
 	return(ssn);
 }
 
-string RegistrarEmployee::sendAddress() {
+string RegistrarEmployee::sendAddress() { //Displays to user that data for address was sent.
 	std::cout << "User Address " << address << " Sent" << std::endl;
 	return(address);
 }
 
-string RegistrarEmployee::sendCity() {
+string RegistrarEmployee::sendCity() { //Displays to user that data for city was sent.
 	std::cout << "User City " << city << " Sent" << std::endl;
 	return(city);
 }
 
-string RegistrarEmployee::sendState() {
+string RegistrarEmployee::sendState() { //Displays to user that data for state was sent.
 	std::cout << "User State " << state << " Sent" << std::endl;
 	return(state);
 }
 
-string RegistrarEmployee::sendGender() {
+string RegistrarEmployee::sendGender() { //Displays to user that data for gender was sent.
 	std::cout << "User Gender " << gender << " Sent" << std::endl;
 	return(gender);
 }
 
-void RegistrarEmployee::recieveFName(string newFName) {
+void RegistrarEmployee::recieveFName(string newFName) { //Inserts new fname into appropriate location.
 	fName = newFName;
 }
 
-void RegistrarEmployee::recieveLName(string newLName) {
+void RegistrarEmployee::recieveLName(string newLName) { //Inserts new lname into appropriate location.
 	lName = newLName;
 }
 
-void RegistrarEmployee::recieveEmail(string newEmail) {
+void RegistrarEmployee::recieveEmail(string newEmail) { //Inserts new email into appropriate location.
 	email = newEmail;
 }
 
-void RegistrarEmployee::recieveSSN(string newSSN) {
+void RegistrarEmployee::recieveSSN(string newSSN) { //Inserts new ssn into appropriate location.
 	ssn = newSSN;
 }
 
-void RegistrarEmployee::recieveAddress(string newAddress) {
+void RegistrarEmployee::recieveAddress(string newAddress) { //Inserts new address into appropriate location.
 	address = newAddress;
 }
 
-void RegistrarEmployee::recieveCity(string newCity) {
+void RegistrarEmployee::recieveCity(string newCity) { //Inserts new city into appropriate location.
 	city = newCity;
 }
 
-void RegistrarEmployee::recieveState(string newState) {
+void RegistrarEmployee::recieveState(string newState) { //Inserts new state into appropriate location.
 	state = newState;
 }
 
-void RegistrarEmployee::recieveGender(string newGender) {
+void RegistrarEmployee::recieveGender(string newGender) { //Inserts new gender into appropriate location.
 	gender = newGender;
 }
