@@ -4,7 +4,7 @@
 using namespace std;
 
 class PersonInfo {
-private:
+private: // Creates empty values for each value to be taken by the user.
 	string fName = "No First Name";
 	string lName = "No Last Name";
 	string email = "No Email";
@@ -18,7 +18,7 @@ public:
 	PersonInfo();
 	~PersonInfo();
 
-
+	// Defines the type of value to be received by each method.
 	string getFName();
 	string getLName();
 	string getEmail();
@@ -28,7 +28,7 @@ public:
 	string getState();
 	string getGender();
 
-
+	// Defines each method for receiving data from user.
 	void modifyFName();
 	void modifyLName();
 	void modifyEmail();
