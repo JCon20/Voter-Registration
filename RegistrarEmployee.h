@@ -4,7 +4,7 @@
 using namespace std;
 
 class RegistrarEmployee {
-private:
+private: // Creates empty values for each value to be taken by the user.
 	string fName = "No First Name Recieved";
 	string lName = "No Last Name Recieved";
 	string email = "No Email Recieved";
@@ -18,6 +18,7 @@ public:
 	RegistrarEmployee();
 	~RegistrarEmployee();
 
+	// Defines the type of value to be received by each method.
 	string sendFName();
 	string sendLName();
 	string sendEmail();
@@ -27,6 +28,7 @@ public:
 	string sendState();
 	string sendGender();
 
+	// Defines each method for receiving data from user.
 	void recieveFName(string newFName);
 	void recieveLName(string newLName);
 	void recieveEmail(string newEmail);
