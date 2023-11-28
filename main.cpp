@@ -4,6 +4,8 @@
 
 #include "PersonInfo.h"
 #include "RegistrarEmployee.h"
+#include "Government.h"
+#include "VoterSubmission.h"
 
 using namespace std;
 
@@ -12,6 +14,7 @@ int main() {
 	PersonInfo person;
 	RegistrarEmployee employee;
 
+	//Fills each string with empty data display.
 	string fName = person.getFName();
 	string lName = person.getLName();
 	string email = person.getEmail();
@@ -21,6 +24,7 @@ int main() {
 	string state = person.getState();
 	string gender = person.getGender();
 
+	//Displays 'empty' values Eg. (No First Name)
 	std::cout << fName << std::endl;
 	std::cout << lName << std::endl;
 	std::cout << email << std::endl;
@@ -30,6 +34,7 @@ int main() {
 	std::cout << state << std::endl;
 	std::cout << gender << std::endl;
 
+	//Prompts user to modify each value
 	person.modifyFName();
 	person.modifyLName();
 	person.modifyEmail();
@@ -39,6 +44,7 @@ int main() {
 	person.modifyState();
 	person.modifyGender();
 
+	//Stores user input and displays
 	fName = person.getFName();
 	lName = person.getLName();
 	email = person.getEmail();
@@ -48,6 +54,7 @@ int main() {
 	state = person.getState();
 	gender = person.getGender();
 
+	
 	employee.recieveFName(fName);
 	employee.recieveLName(lName);
 	employee.recieveEmail(email);
