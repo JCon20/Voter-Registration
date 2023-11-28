@@ -8,6 +8,8 @@ private:
         string deptID = "10315";
         string deptName = "Voter Verification Services";
         string state = "Alabama";
+        string county = "Mobile County";
+        string city = "Mobile";
 
 public:
         Government();
