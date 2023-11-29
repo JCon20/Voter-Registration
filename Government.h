@@ -15,9 +15,12 @@ public:
         Government();
         ~Government();
 
-        /*string getDeptID();
-        string getDeptName();
-        string getGovState(); may or may not end up being used */
+        bool valid_city();
+        bool valid_state();
+        bool valid_zipcode();
+        bool eligibilityCheck();
         void approveRegistration(); // approves the request for verification
-        void denyRequest(); // denies the request for verification
+        void checkVoterDatabase();
+        void updateVoterDatabase();
+        
 };
