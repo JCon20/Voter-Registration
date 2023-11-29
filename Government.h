@@ -18,6 +18,6 @@ public:
         /*string getDeptID();
         string getDeptName();
         string getGovState(); may or may not end up being used */
-        void approveRequest(); // approves the request for verification
+        void approveRegistration(); // approves the request for verification
         void denyRequest(); // denies the request for verification
 };
