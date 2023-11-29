@@ -31,6 +31,9 @@ bool valid_city(RegistrarEmployee employee)
     if (employee.sendToGovCity() == "Mobile") {
         return true; 
     } 
+    if (employee.sendToGovCity() == "mobile") {
+        return true;
+    }
     else {
         return false; 
     }
@@ -42,6 +45,15 @@ bool valid_state(RegistrarEmployee employee) {
     }
     if (employee.sendToGovState() == "AL") {
         return true; 
+    }
+    if (employee.sendToGovState() == "alabama") {
+        return true;
+    }
+    if (employee.sendToGovState() == "al") {
+        return true;
+    }
+    if (employee.sendToGovState() == "Al") {
+        return true;
     }
     else{
         return false; 
