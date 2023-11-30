@@ -3,80 +3,92 @@
 #include <string>
 
 #include "PersonInfo.h"
+#include "PersonList.h"
 
 using namespace std;
 
 PersonInfo::PersonInfo() {
-	
+	fName = "No First Name";
+	lName = "No Last Name";
+	email = "No Email";
+	ssn = "No Social Security Number";
+	address = "No Address";
+	city = "No City";
+	state = "No State";
+	gender = "No Gender";
+}
+
+PersonInfo::PersonInfo(string fName, string lName, string email, string ssn, string address, string city, string state, string gender) : fName{ fName }, lName{ lName }, email{ email }, ssn{ ssn }, address{ address }, city{ city }, state{ state }, gender{ gender } {
+
 }
 
 PersonInfo::~PersonInfo() {
 
 }
 
-string PersonInfo::getFName() { //Returns value stored in fName
+string PersonInfo::getFName() {
 	return(fName);
 }
 
-string PersonInfo::getLName() { //Returns value stored in lName
+string PersonInfo::getLName() {
 	return(lName);
 }
 
-string PersonInfo::getEmail() { //Returns value stored in email
+string PersonInfo::getEmail() {
 	return(email);
 }
 
-string PersonInfo::getSSN() { //Returns value stored in ssn
+string PersonInfo::getSSN() {
 	return(ssn);
 }
 
-string PersonInfo::getAddress() { //Returns value stored in address
+string PersonInfo::getAddress() {
 	return(address);
 }
 
-string PersonInfo::getCity() { //Returns value stored in city
+string PersonInfo::getCity() {
 	return(city);
 }
 
-string PersonInfo::getState() { //Returns value stored in state
+string PersonInfo::getState() {
 	return(state);
 }
 
-string PersonInfo::getGender() { //Returns value stored in gender
+string PersonInfo::getGender() {
 	return(gender);
 }
 
 
 
-void PersonInfo::modifyFName() { //Prompts user to modify data for fName
-	std::cout << "Please enter your First Name: " << std::endl;
+void PersonInfo::modifyFName() {
+	std::cout << "Enter your First Name: " << std::endl;
 	std::getline(std::cin, fName);
 }
-void PersonInfo::modifyLName() { //Prompts user to modify data for lName
-	std::cout << "Please enter your Last Name: " << std::endl;
+void PersonInfo::modifyLName() {
+	std::cout << "Enter your Last Name: " << std::endl;
 	std::getline(std::cin, lName);
 }
-void PersonInfo::modifyEmail() { //Prompts user to modify data for email
-	std::cout << "Please enter your Email: " << std::endl;
+void PersonInfo::modifyEmail() {
+	std::cout << "Enter your Email: " << std::endl;
 	std::getline(std::cin, email);
 }
-void PersonInfo::modifySSN() { //Prompts user to modify data for ssn
-	std::cout << "Please enter your Social Security Number: " << std::endl;
+void PersonInfo::modifySSN() {
+	std::cout << "Enter your Social Security Number: " << std::endl;
 	std::getline(std::cin, ssn);
 }
-void PersonInfo::modifyAddress() { //Prompts user to modify data for address
-	std::cout << "Please enter your Address: " << std::endl;
+void PersonInfo::modifyAddress() {
+	std::cout << "Enter your Address: " << std::endl;
 	std::getline(std::cin, address);
 }
-void PersonInfo::modifyCity() { //Prompts user to modify data for city
-	std::cout << "Please enter your City: " << std::endl;
+void PersonInfo::modifyCity() {
+	std::cout << "Enter your City: " << std::endl;
 	std::getline(std::cin, city);
 }
-void PersonInfo::modifyState() { //Prompts user to modify data for state
-	std::cout << "Please enter your State: " << std::endl;
+void PersonInfo::modifyState() {
+	std::cout << "Enter your State: " << std::endl;
 	std::getline(std::cin, state);
 }
-void PersonInfo::modifyGender() { //Prompts user to modify data for gender
-	std::cout << "Please enter your Gender: " << std::endl;
+void PersonInfo::modifyGender() {
+	std::cout << "Enter your Gender: " << std::endl;
 	std::getline(std::cin, gender);
 }
