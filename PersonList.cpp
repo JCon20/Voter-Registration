@@ -45,7 +45,7 @@ void PersonList::addPerson(PersonInfo person) {
 	return;
 }
 
-bool PersonList::findPerson(string fName) {
+bool PersonList::findPerson(string ssn) {
 	PersonNode* temp = head;
 	bool found = false;
 
@@ -55,7 +55,7 @@ bool PersonList::findPerson(string fName) {
 	}
 
 	while (temp != NULL) {
-		if (fName == temp->data.getFName()) {
+		if (ssn == temp->data.getSSN()) {
 			found = true;
 			break;
 		}
@@ -63,25 +63,25 @@ bool PersonList::findPerson(string fName) {
 	}
 
 	if (found) {
-		cout << "Voter with the first name '" << fName << "' exists in our database.\n";
+		cout << "Voter with the SSN '" << ssn << "' exists in our database.\n";
 	}
 	else {
-		cout << "Voter with the first name '" << fName << "' doesn't exist in our database.\n";
+		cout << "Voter with the SSN '" << ssn << "' doesn't exist in our database.\n";
 	}
 
 	return found;
 }
 
-void PersonList::editPerson(const string& currentFName) {
+void PersonList::editPerson(const string& currentSSN) {
 	PersonNode* temp = head;
 
 	if (temp == NULL) {
-		cout << "The list is currently empty.\n";
+		cout << "There are no voters.\n";
 		return;
 	}
 
 	while (temp != NULL) {
-		if (currentFName == temp->data.getFName()) {
+		if (currentSSN == temp->data.getSSN()) {
 			temp->data.modifyFName();
 			temp->data.modifyLName();
 			temp->data.modifyEmail();
@@ -90,25 +90,25 @@ void PersonList::editPerson(const string& currentFName) {
 			temp->data.modifyCity();
 			temp->data.modifyState();
 			temp->data.modifyGender();
-			cout << "Voter with the first name '" << currentFName << "' has been updated.\n";
+			cout << "Voter with the SSN '" << currentSSN << "' has been updated.\n";
 			return;
 		}
 		temp = temp->next;
 	}
 
-	cout << "Voter with the first name '" << currentFName << "' doesn't exist in our database.\n";
+	cout << "Voter with the SSN '" << currentSSN << "' doesn't exist in our database.\n";
 }
 
-void PersonList::deletePerson(const string& fName) {
+void PersonList::deletePerson(const string& ssn) {
 	PersonNode* temp = head;
 
 	if (temp == NULL) {
-		cout << "The list is currently empty.\n";
+		cout << "There are no voters.\n";
 		return;
 	}
 
 	while (temp != NULL) {
-		if (fName == temp->data.getFName()) {
+		if (fName == temp->data.getSSN()) {
 			if (temp->prev != NULL) {
 				temp->prev->next = temp->next;
 			}
@@ -124,13 +124,13 @@ void PersonList::deletePerson(const string& fName) {
 			}
 
 			delete temp;
-			cout << "Voter with th first name '" << fName << "' has been removed from our database.\n";
+			cout << "Voter with the SSN '" << ssn << "' has been removed from our database.\n";
 			return;
 		}
 		temp = temp->next;
 	}
 
-	cout << "Voter with the first name '" << fName << "' doesn't exist in our database.\n";
+	cout << "Voter with the SSN '" << ssn << "' doesn't exist in our database.\n";
 }
 
 void PersonList::removeFront() {
@@ -150,7 +150,7 @@ void PersonList::displayList() {
 	PersonNode* temp = head;
 	int number = 1;
 	if (temp == NULL) {
-		cout << "The list is currently empty.\n";
+		cout << "There are no voters.\n";
 		return;
 	}
 	while (temp != NULL) {
