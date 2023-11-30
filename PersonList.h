@@ -16,9 +16,9 @@ private :
 
 		bool empty();
 		void addPerson(PersonInfo person);
-		bool findPerson(string fName);
-		void editPerson(const string& currentFName);
-		void deletePerson(const string& fName);
+		bool findPerson(string ssn);
+		void editPerson(const string& currenSSN);
+		void deletePerson(const string& ssn);
 		void removeFront();
 		void displayList();
 };
