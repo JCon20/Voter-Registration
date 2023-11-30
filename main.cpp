@@ -36,8 +36,9 @@ int main() {
 			<< "\t3\tChange information for an existing voter.\n"
 			<< "\t4\tRemove an existing voter from our database.\n"
 			<< "\t5\tDisplay our voter database.\n"
-			<< "\t6\tSend Voter to Registrar Employee\n"
-			<< "\t7\tEnd program\n"
+			<< "\t6\tSend Voter to Registrar Employee.\n"
+			<< "\t7\tVerify Voter Eligibility.\n"
+			<< "\t8\tEnd program\n"
 			<< "---------------------------------------------------------------------\n\n"
 			<< "Enter your choice : ";
 
@@ -120,6 +121,25 @@ int main() {
 			break;
 		}
 		case 7:
+		{
+			string ssn;
+			bool find;
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			cout << "\nEnter the first name of the voter you want to send to the Registrar Employee: ";
+			std::getline(std::cin, ssn);
+
+			find = PersonList.findPerson(ssn);
+			if (find) {
+				std::cout << "Voter with SSN " << ssn << " Sent to Registrar Employee" << std::endl;
+			}
+			else {
+				std::cout << "Voter with SSN " << ssn << " cannot be sent" << std::endl;
+			}
+
+			pressAnyKey();
+			break;
+		}
+		case 8:
 		{
 			std::cout << "The program is now ending." << std::endl;
 			keepGoing = false;
