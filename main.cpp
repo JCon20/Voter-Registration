@@ -27,14 +27,15 @@ int main() {
 	while (keepGoing) {
 		cout << endl
 			<< "---------------------------------------------------------------------\n"
+			<< " Thank you for using our voter registration system!\n"
 			<< " Select an option from the menu below\n"
 			<< " by entering the number of the choice\n"
 			<< "---------------------------------------------------------------------\n"
-			<< "\t1\tAdd a new Person to the list\n"
-			<< "\t2\tCheck for existing Person\n"
-			<< "\t3\tChange data for existing Person\n"
-			<< "\t4\tDelete existing Person\n"
-			<< "\t5\tDisplay the list front to back\n"
+			<< "\t1\tAdd new voter information to our database.\n"
+			<< "\t2\tCheck our system for an existing voter.\n"
+			<< "\t3\tChange information for an existing voter.\n"
+			<< "\t4\tRemove an existing voter from our database.\n"
+			<< "\t5\tDisplay our voter database.\n"
 			<< "\t6\tEnd program\n"
 			<< "---------------------------------------------------------------------\n\n"
 			<< "Enter your choice : ";
@@ -63,7 +64,7 @@ int main() {
 		{
 			string fName;
 			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			cout << "\nEnter the Person's First Name: ";
+			cout << "\nEnter the voter's First Name: ";
 			std::getline(std::cin, fName);
 			PersonList.findPerson(fName);
 			pressAnyKey();
@@ -74,7 +75,7 @@ int main() {
 			string currentName;
 
 			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			cout << "\nEnter the first name of the Person you want to change: ";
+			cout << "\nEnter the first name for the voter you want to change: ";
 			std::getline(std::cin, currentName);
 			PersonList.editPerson(currentName);
 			pressAnyKey();
@@ -84,7 +85,7 @@ int main() {
 		{
 			string fName;
 			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			cout << "\nEnter the first name of the person you want to delete: ";
+			cout << "\nEnter the first name of the voter you want to remove: ";
 			std::getline(std::cin, fName);
 
 			PersonList.deletePerson(fName);
