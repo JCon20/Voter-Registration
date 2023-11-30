@@ -64,33 +64,33 @@ int main() {
 		}
 		case 2:
 		{
-			string fName;
+			string ssn;
 			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			cout << "\nEnter the voter's First Name: ";
-			std::getline(std::cin, fName);
-			PersonList.findPerson(fName);
+			cout << "\nEnter the voter's SSN: ";
+			std::getline(std::cin, ssn);
+			PersonList.findPerson(ssn);
 			pressAnyKey();
 			break;
 		}
 		case 3:
 		{
-			string currentName;
+			string currentSSN;
 
 			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			cout << "\nEnter the first name for the voter you want to change: ";
-			std::getline(std::cin, currentName);
-			PersonList.editPerson(currentName);
+			cout << "\nEnter the SSN for the voter you want to change: ";
+			std::getline(std::cin, currentSSN);
+			PersonList.editPerson(currentSSN);
 			pressAnyKey();
 			break;
 		}
 		case 4:
 		{
-			string fName;
+			string ssn;
 			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			cout << "\nEnter the first name of the voter you want to remove: ";
-			std::getline(std::cin, fName);
+			cout << "\nEnter the SSN of the voter you want to remove: ";
+			std::getline(std::cin, ssn);
 
-			PersonList.deletePerson(fName);
+			PersonList.deletePerson(ssn);
 			pressAnyKey();
 			break;
 		}
@@ -103,18 +103,18 @@ int main() {
 		
 		case 6:
 		{
-			string fName;
+			string ssn;
 			bool find;
 			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			cout << "\nEnter the first name of the voter you want to send to the Registrar Employee: ";
-			std::getline(std::cin, fName);
+			std::getline(std::cin, ssn);
 
-			find = PersonList.findPerson(fName);
+			find = PersonList.findPerson(ssn);
 			if (find) {
-				std::cout << "Voter " << fName << " Sent to Registrar Employee" << std::endl;
+				std::cout << "Voter with SSN " << ssn << " Sent to Registrar Employee" << std::endl;
 			}
 			else {
-				std::cout << "Voter " << fName << " cannot be sent" << std::endl;
+				std::cout << "Voter with SSN " << ssn << " cannot be sent" << std::endl;
 			}
 
 			pressAnyKey();
