@@ -154,7 +154,7 @@ void PersonList::displayList() {
 		return;
 	}
 	while (temp != NULL) {
-		cout << "   Voter " << number << ":   " << "name: " << temp->data.getFName() << "  " << temp->data.getLName() << " \n email: " <<temp->data.getEmail() << " \n ssn: " << temp->data.getSSN() << " \n address: " << temp->data.getAddress() << " \n city: " << temp->data.getCity() << " \n state: " << temp->data.getState() << " \n gender: " << temp->data.getGender() << endl;
+		cout << "   Voter " << number << ":   " << "\n name: " << temp->data.getFName() << "  " << temp->data.getLName() << " \n email: " <<temp->data.getEmail() << " \n ssn: " << temp->data.getSSN() << " \n address: " << temp->data.getAddress() << " \n city: " << temp->data.getCity() << " \n state: " << temp->data.getState() << " \n gender: " << temp->data.getGender() << endl;
 		temp = temp->next;
 		number++;
 	}
