@@ -100,13 +100,13 @@ int main() {
 			pressAnyKey();
 			break;
 		}
-		
+
 		case 6:
 		{
 			string ssn;
 			bool find;
 			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			cout << "\nEnter the first name of the voter you want to send to the Registrar Employee: ";
+			cout << "\nEnter the SSN of the voter you want to send to the Registrar Employee: ";
 			std::getline(std::cin, ssn);
 
 			find = PersonList.findPerson(ssn);
@@ -125,15 +125,15 @@ int main() {
 			string ssn;
 			bool find;
 			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			cout << "\nEnter the first name of the voter you want to send to the Registrar Employee: ";
+			cout << "\nEnter the SSN of the voter you want to send to the Registrar Employee: ";
 			std::getline(std::cin, ssn);
 
 			find = PersonList.findPerson(ssn);
 			if (find) {
-				std::cout << "Voter with SSN " << ssn << " Sent to Registrar Employee" << std::endl;
+				std::cout << "Voter with SSN " << ssn << " Is Eligible" << std::endl;
 			}
 			else {
-				std::cout << "Voter with SSN " << ssn << " cannot be sent" << std::endl;
+				std::cout << "Voter with SSN " << ssn << " cannot be verified" << std::endl;
 			}
 
 			pressAnyKey();
@@ -156,7 +156,7 @@ int main() {
 	}
 
 	return 0;
-	
+
 }
 
 void pressAnyKey() {
