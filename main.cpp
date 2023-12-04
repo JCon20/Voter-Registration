@@ -35,10 +35,11 @@ int main() {
 			<< "\t2\tCheck our system for an existing voter.\n"
 			<< "\t3\tChange information for an existing voter.\n"
 			<< "\t4\tRemove an existing voter from our database.\n"
-			<< "\t5\tDisplay our voter database.\n"
-			<< "\t6\tSend Voter to Registrar Employee.\n"
-			<< "\t7\tVerify Voter Eligibility.\n"
-			<< "\t8\tEnd program\n"
+			<< "\t5\tDisplay a voter's information.\n"
+			<< "\t6\tDisplay our voter database.\n"
+			<< "\t7\tSend Voter to Registrar Employee.\n"
+			<< "\t8\tVerify Voter Eligibility.\n"
+			<< "\t9\tEnd program\n"
 			<< "---------------------------------------------------------------------\n\n"
 			<< "Enter your choice : ";
 
@@ -66,7 +67,7 @@ int main() {
 		{
 			string ssn;
 			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			cout << "\nEnter the voter's SSN: ";
+			cout << "\nEnter the voter's SSN to check our system: ";
 			std::getline(std::cin, ssn);
 			PersonList.findPerson(ssn);
 			pressAnyKey();
@@ -96,30 +97,21 @@ int main() {
 		}
 		case 5:
 		{
+			string ssn;
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			cout << "\nEnter the voter's SSN to view their information: ";
+			std::getline(std::cin, ssn);
+			PersonList.displayVoter(ssn);
+			pressAnyKey();
+			break;
+		}
+		case 6:
+		{
 			PersonList.displayList();
 			pressAnyKey();
 			break;
 		}
 
-		case 6:
-		{
-			string ssn;
-			bool find;
-			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			cout << "\nEnter the SSN of the voter you want to send to the Registrar Employee: ";
-			std::getline(std::cin, ssn);
-
-			find = PersonList.findPerson(ssn);
-			if (find) {
-				std::cout << "Voter with SSN " << ssn << " Sent to Registrar Employee" << std::endl;
-			}
-			else {
-				std::cout << "Voter with SSN " << ssn << " cannot be sent" << std::endl;
-			}
-
-			pressAnyKey();
-			break;
-		}
 		case 7:
 		{
 			string ssn;
@@ -130,16 +122,35 @@ int main() {
 
 			find = PersonList.findPerson(ssn);
 			if (find) {
-				std::cout << "Voter with SSN " << ssn << " Is Eligible" << std::endl;
+				std::cout << "Voter with SSN " << ssn << " sent to Registrar Employee" << std::endl;
 			}
 			else {
-				std::cout << "Voter with SSN " << ssn << " cannot be verified" << std::endl;
+				std::cout << "Voter with SSN " << ssn << " cannot be sent" << std::endl;
 			}
 
 			pressAnyKey();
 			break;
 		}
 		case 8:
+		{
+			string ssn;
+			bool find;
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			cout << "\nEnter the SSN of the voter you want to verify: ";
+			std::getline(std::cin, ssn);
+
+			find = PersonList.findPerson(ssn);
+			if (find) {
+				std::cout << "Voter with SSN " << ssn << " sent to Registrar Employee to be verified" << std::endl;
+			}
+			else {
+				std::cout << "Voter with SSN " << ssn << " cannot be sent to be verified" << std::endl;
+			}
+
+			pressAnyKey();
+			break;
+		}
+		case 9:
 		{
 			std::cout << "The program is now ending." << std::endl;
 			keepGoing = false;
