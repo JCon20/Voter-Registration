@@ -21,4 +21,5 @@ private :
 		void deletePerson(const string& ssn);
 		void removeFront();
 		void displayList();
+		void displayVoter(string ssn);
 };
