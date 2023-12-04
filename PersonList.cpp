@@ -50,7 +50,7 @@ bool PersonList::findPerson(string ssn) {
 	bool found = false;
 
 	if (temp == NULL) {
-		cout << "The list is currently empty.\n";
+		cout << "There are no voters in our database.\n";
 		return found;
 	}
 
@@ -76,7 +76,7 @@ void PersonList::editPerson(const string& currentSSN) {
 	PersonNode* temp = head;
 
 	if (temp == NULL) {
-		cout << "There are no voters.\n";
+		cout << "There are no voters in our database.\n";
 		return;
 	}
 
@@ -103,7 +103,7 @@ void PersonList::deletePerson(const string& ssn) {
 	PersonNode* temp = head;
 
 	if (temp == NULL) {
-		cout << "There are no voters.\n";
+		cout << "There are no voters in our database.\n";
 		return;
 	}
 
@@ -150,7 +150,7 @@ void PersonList::displayList() {
 	PersonNode* temp = head;
 	int number = 1;
 	if (temp == NULL) {
-		cout << "There are no voters.\n";
+		cout << "There are no voters in our database.\n";
 		return;
 	}
 	while (temp != NULL) {
@@ -158,5 +158,32 @@ void PersonList::displayList() {
 		temp = temp->next;
 		number++;
 	}
+	return;
+}
+
+void PersonList::displayVoter(string ssn) {
+	PersonNode* temp = head;
+	bool found = false;
+
+	if (temp == NULL) {
+		cout << "There are no voters in our database.\n";
+		return;
+	}
+
+	while (temp != NULL) {
+		if (ssn == temp->data.getSSN()) {
+			found = true;
+			break;
+		}
+		temp = temp->next;
+	}
+
+	if (found) {
+		cout << "   Voter's information: " << "\n name: " << temp->data.getFName() << "  " << temp->data.getLName() << " \n email: " << temp->data.getEmail() << " \n ssn: " << temp->data.getSSN() << " \n address: " << temp->data.getAddress() << " \n city: " << temp->data.getCity() << " \n state: " << temp->data.getState() << " \n gender: " << temp->data.getGender() << endl;
+	}
+	else {
+		cout << "Voter with the SSN '" << ssn << "' doesn't exist in our database.\n";
+	}
+
 	return;
 }
