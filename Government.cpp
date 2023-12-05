@@ -3,71 +3,86 @@
 #include <sstream>
 #include <vector>
 #include <string>
+#include <cctype>
 #include "RegistrarEmployee.h"
+#include "PersonList.h"
 #include "PersonInfo.h"
+#include "Government.h"
 
 using namespace std;
 
-class Government {
-private:
-    bool approved;
-    bool registered;
     RegistrarEmployee employee;
 
-public:
-    Government() : approved(false), registered(false) {} // Initialize approved and registered to false for clarity.
-
-    ~Government() {} 
-
-    bool valid_city() {
-        return employee.sendToGovCity() == "Mobile";
-    }
-
-    bool valid_state() {
-        string state = employee.sendToGovState();
-        return state == "Alabama" || state == "AL";
-    }
-
-    bool valid_zipcode() {
-        return employee.sendToGovZipcode() == "36695"; // add more valid zip codes as needed
-    }
-
-    void checkVoterDatabase() {
-        ifstream fin("voter-registry.csv");
-        string line, word;
+    Government::Government() {
+        approved = false;
         registered = false;
+    } // Initialize approved and registered to false for clarity.
 
-        while (getline(fin, line)) {
-            stringstream s(line);
-            while (getline(s, word, ',')) {
-                if (word == employee.sendToGovSSN()) {
-                    registered = true;
-                    return;
-                }
+    Government::~Government() {
+    }
+
+    bool Government::valid_city(int ssn) {
+        string city = employee.sendToGovCity(ssn);
+        bool temp = true;
+
+        for (char c : city) {
+            if (!isalpha(c)) {
+                temp = false; 
             }
         }
+        return(temp);  //return true if all letters
     }
 
-    bool eligibilityCheck() const {
-        return !registered;
+    bool Government::valid_state(int ssn) {
+        string state = employee.sendToGovState(ssn);
+        bool temp;
+        temp = (state == "Alabama" || state == "AL" || state == "Alaska" || state == "AK" || state == "Arizona" || state == "AZ" || state == "Arkansas" || state == "AR" || state == "California" || state == "CA" || state == "Colorado" || state == "CO" || state == "Conneticut" || state == "CT" || state == "Delware" || state == "DE" || state == "Florida" || state == "FL" || state == "Georgia" || state == "GA" || state == "Hawaii" || state == "HI" || state == "Idaho" || state == "ID" || state == "Illinois" || state == "IL" || state == "Indiana" || state == "IN" || state == "Iowa" || state == "IA" || state == "Kansas" || state == "KS" || state == "Kentucky" || state == "KY" || state == "Louisiana" || state == "LA" || state == "Maine" || state == "ME" || state == "Maryland" || state == "MD" || state == "Massachusetts" || state == "MA" || state == "Michigan" || state == "MI" || state == "Minnesota" || state == "MN" || state == "Mississippi" || state == "MS" || state == "Missouri" || state == "MO" || state == "Montana" || state == "MT" || state == "Nebraska" || state == "NE" || state == "Nevada" || state == "NV" || state == "New Hampshire" || state == "NH" || state == "New Jersey" || state == "NJ" || state == "New Mexico" || state == "NM" || state == "New York" || state == "NY" || state == "North Carolina" || state == "NC" || state == "North Dakota" || state == "ND" || state == "Ohio" || state == "OH" || state == "Oklahoma" || state == "OK" || state == "Oregon" || state == "OR" || state == "Pennsylvania" || state == "PA" || state == "Rhode Island" || state == "RI" || state == "South Carolina" || state == "SC" || state == "South Dakota" || state == "SD" || state == "Tennessee" || state == "TN" || state == "Texas" || state == "TX" || state == "Utah" || state == "UT" || state == "Vermont" || state == "VT" || state == "Virginia" || state == "VA" || state == "Washington" || state == "WA" || state == "West Virginia" || state == "WV" || state == "Winsconsin" || state == "WI" || state == "Wyoming" || state == "WY");
+        return(temp);
     }
 
-    void approveRegistration() {
-        approved = eligibilityCheck();
+    bool Government::checkVoterDatabase(int ssn) {
+        PersonList person;
+        registered = false;
+        if (person.findPerson(ssn)) {
+            registered = true;
+        }
+        
+        return(registered);
     }
 
-    void updateVoterDatabase() {
+    bool Government::eligibilityCheck(int ssn) {
+        Government gov;
+        bool eligible = false;
+        bool temp = false;
+        if (gov.checkVoterDatabase(ssn)) {
+            if (gov.valid_city(ssn)) {
+                if (gov.valid_state(ssn)) {
+
+                }
+            }
+            
+        }
+        return(eligible);
+    }
+
+    void Government::approveRegistration(int ssn) {
+        approved = eligibilityCheck(ssn);
         if (approved) {
-            ofstream voterRegistry("voter-registry.csv", ios::app);
-            voterRegistry << employee.sendToGovFName() << ',' 
-                          << employee.sendToGovLName() << ',' 
-                          << employee.sendToGovSSN() << ',' 
-                          << employee.sendToGovEmail() << ',' 
-                          << employee.sendToGovAddress() << ',' 
-                          << employee.sendToGovCity() << ',' 
-                          << employee.sendToGovState() << ',' 
-                          << employee.sendToGovZipcode() << ',' 
-                          << employee.sendToGovGender() << '\n';
+            cout << "\tVoter is approved.\n";
+        }
+        else {
+            cout << "\tVoter is ineligible.\n";
         }
     }
-};
+
+    void Government::updateVoterDatabase() {
+        if (approved) {
+            ofstream voterRegistry("voter-registry.csv", ios::app);
+            voterRegistry << employee.sendToGovFName() << ','
+                << employee.sendToGovLName() << ','
+                << employee.sendToGovSSN() << ','
+                << employee.sendToGovEmail() << ','
+                << employee.sendToGovAddress() << ','
+                << employee.sendToGovGender() << '\n';
+        }
+    }
