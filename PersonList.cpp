@@ -21,6 +21,43 @@ bool PersonList::empty() {
 	return (head == NULL);
 }
 
+string PersonList::getCity(int ssn) {
+	PersonNode* temp = head;
+	bool found = false;
+
+	while (temp != NULL) {
+		if (ssn == temp->data.getSSN()) {
+			found = true;
+			break;
+		}
+		temp = temp->next;
+	}
+
+	if (found) {
+		return(temp->data.getCity());
+	}
+
+}
+
+string PersonList::getState(int ssn) {
+	PersonNode* temp = head;
+	bool found = false;
+
+	while (temp != NULL) {
+		if (ssn == temp->data.getSSN()) {
+			found = true;
+			break;
+		}
+		temp = temp->next;
+	}
+
+	if (found) {
+		return(temp->data.getState());
+	}
+
+}
+
+
 void PersonList::addPerson(PersonInfo person) {
 	person.modifyFName();
 	person.modifyLName();
@@ -45,12 +82,12 @@ void PersonList::addPerson(PersonInfo person) {
 	return;
 }
 
-bool PersonList::findPerson(string ssn) {
+bool PersonList::findPerson(int ssn) {
 	PersonNode* temp = head;
 	bool found = false;
 
 	if (temp == NULL) {
-		cout << "There are no voters in our database.\n";
+		cout << "There are no voters.\n";
 		return found;
 	}
 
@@ -72,11 +109,11 @@ bool PersonList::findPerson(string ssn) {
 	return found;
 }
 
-void PersonList::editPerson(const string& currentSSN) {
+void PersonList::editPerson(const int& currentSSN) {
 	PersonNode* temp = head;
 
 	if (temp == NULL) {
-		cout << "There are no voters in our database.\n";
+		cout << "There are no voters.\n";
 		return;
 	}
 
@@ -99,16 +136,16 @@ void PersonList::editPerson(const string& currentSSN) {
 	cout << "Voter with the SSN '" << currentSSN << "' doesn't exist in our database.\n";
 }
 
-void PersonList::deletePerson(const string& ssn) {
+void PersonList::deletePerson(const int& ssn) {
 	PersonNode* temp = head;
 
 	if (temp == NULL) {
-		cout << "There are no voters in our database.\n";
+		cout << "There are no voters.\n";
 		return;
 	}
 
 	while (temp != NULL) {
-		if (fName == temp->data.getSSN()) {
+		if (ssn == temp->data.getSSN()) {
 			if (temp->prev != NULL) {
 				temp->prev->next = temp->next;
 			}
@@ -150,18 +187,18 @@ void PersonList::displayList() {
 	PersonNode* temp = head;
 	int number = 1;
 	if (temp == NULL) {
-		cout << "There are no voters in our database.\n";
+		cout << "There are no voters.\n";
 		return;
 	}
 	while (temp != NULL) {
-		cout << "   Voter " << number << ":   " << "\n name: " << temp->data.getFName() << "  " << temp->data.getLName() << " \n email: " <<temp->data.getEmail() << " \n ssn: " << temp->data.getSSN() << " \n address: " << temp->data.getAddress() << " \n city: " << temp->data.getCity() << " \n state: " << temp->data.getState() << " \n gender: " << temp->data.getGender() << endl;
+		cout << "   Voter " << number << ":   " << "\n name: " << temp->data.getFName() << "  " << temp->data.getLName() << " \n email: " << temp->data.getEmail() << " \n ssn: " << temp->data.getSSN() << " \n address: " << temp->data.getAddress() << " \n city: " << temp->data.getCity() << " \n state: " << temp->data.getState() << " \n gender: " << temp->data.getGender() << endl;
 		temp = temp->next;
 		number++;
 	}
 	return;
 }
 
-void PersonList::displayVoter(string ssn) {
+void PersonList::displayPerson(int ssn) {
 	PersonNode* temp = head;
 	bool found = false;
 
