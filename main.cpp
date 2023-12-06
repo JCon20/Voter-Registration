@@ -141,14 +141,34 @@ int main() {
 			cout << "\nEnter the SSN of the voter you want to check the eligibility of: ";
 			std::cin >> ssn;
 
-			find = gov.eligibilityCheck(ssn);
+			find = gov.valid_city(PersonList.getCity(ssn));
 			if (find) {
-				std::cout << "Voter with SSN " << ssn << " Is Eligible" << std::endl;
+				find = gov.valid_state(PersonList.getState(ssn));
+				if (find) {
+					find = PersonList.findPerson(ssn);
+					if (find) {
+						std::cout << "\nVoter with SSN " << ssn << " is eligible." << std::endl;
+						cin.clear();
+						cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
+					}
+					else {
+						std::cout << "\nVoter with SSN " << ssn << " is not eligible." << std::endl;
+						cin.clear();
+						cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
+					}
+				}
+				else {
+					std::cout << "\nVoter with SSN " << ssn << " is not eligible." << std::endl;
+					cin.clear();
+					cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
+				}
 			}
 			else {
-				std::cout << "Voter with SSN " << ssn << " cannot be verified" << std::endl;
+				std::cout << "\nVoter with SSN " << ssn << " is not eligible." << std::endl;
+				cin.clear();
+				cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
 			}
-
+			
 			pressAnyKey();
 			break;
 		}
