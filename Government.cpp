@@ -21,8 +21,7 @@ using namespace std;
     Government::~Government() {
     }
 
-    bool Government::valid_city(int ssn) {
-        string city = employee.sendToGovCity(ssn);
+    bool Government::valid_city(string city) {
         bool temp = true;
 
         for (char c : city) {
@@ -33,8 +32,7 @@ using namespace std;
         return(temp);  //return true if all letters
     }
 
-    bool Government::valid_state(int ssn) {
-        string state = employee.sendToGovState(ssn);
+    bool Government::valid_state(string state) {
         bool temp;
         temp = (state == "Alabama" || state == "AL" || state == "Alaska" || state == "AK" || state == "Arizona" || state == "AZ" || state == "Arkansas" || state == "AR" || state == "California" || state == "CA" || state == "Colorado" || state == "CO" || state == "Conneticut" || state == "CT" || state == "Delware" || state == "DE" || state == "Florida" || state == "FL" || state == "Georgia" || state == "GA" || state == "Hawaii" || state == "HI" || state == "Idaho" || state == "ID" || state == "Illinois" || state == "IL" || state == "Indiana" || state == "IN" || state == "Iowa" || state == "IA" || state == "Kansas" || state == "KS" || state == "Kentucky" || state == "KY" || state == "Louisiana" || state == "LA" || state == "Maine" || state == "ME" || state == "Maryland" || state == "MD" || state == "Massachusetts" || state == "MA" || state == "Michigan" || state == "MI" || state == "Minnesota" || state == "MN" || state == "Mississippi" || state == "MS" || state == "Missouri" || state == "MO" || state == "Montana" || state == "MT" || state == "Nebraska" || state == "NE" || state == "Nevada" || state == "NV" || state == "New Hampshire" || state == "NH" || state == "New Jersey" || state == "NJ" || state == "New Mexico" || state == "NM" || state == "New York" || state == "NY" || state == "North Carolina" || state == "NC" || state == "North Dakota" || state == "ND" || state == "Ohio" || state == "OH" || state == "Oklahoma" || state == "OK" || state == "Oregon" || state == "OR" || state == "Pennsylvania" || state == "PA" || state == "Rhode Island" || state == "RI" || state == "South Carolina" || state == "SC" || state == "South Dakota" || state == "SD" || state == "Tennessee" || state == "TN" || state == "Texas" || state == "TX" || state == "Utah" || state == "UT" || state == "Vermont" || state == "VT" || state == "Virginia" || state == "VA" || state == "Washington" || state == "WA" || state == "West Virginia" || state == "WV" || state == "Winsconsin" || state == "WI" || state == "Wyoming" || state == "WY");
         return(temp);
@@ -50,24 +48,20 @@ using namespace std;
         return(registered);
     }
 
-    bool Government::eligibilityCheck(int ssn) {
+    bool Government::eligibilityCheck(int ssn, bool temp) {
         Government gov;
         bool eligible = false;
-        bool temp = false;
-        if (gov.checkVoterDatabase(ssn)) {
-            if (gov.valid_city(ssn)) {
-                if (gov.valid_state(ssn)) {
-
-                }
+        bool tempBool = false;
+        if (temp) {
+            if (gov.checkVoterDatabase(ssn)) {
+                tempBool = true;
             }
-            
         }
         return(eligible);
     }
 
-    void Government::approveRegistration(int ssn) {
-        approved = eligibilityCheck(ssn);
-        if (approved) {
+    void Government::approveRegistration(bool eligible) {
+        if (eligible) {
             cout << "\tVoter is approved.\n";
         }
         else {
