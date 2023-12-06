@@ -18,10 +18,10 @@ public:
     Government();
     ~Government();
 
-    bool valid_city(int ssn);
-    bool valid_state(int ssn);
-    bool eligibilityCheck(int ssn);
-    void approveRegistration(int ssn); // approves the request for verification
+    bool valid_city(string city);
+    bool valid_state(string state);
+    bool eligibilityCheck(int ssn, bool temp);
+    void approveRegistration(bool eligible); // approves the request for verification
     bool checkVoterDatabase(int ssn);
     void updateVoterDatabase();
 
