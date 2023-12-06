@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string>
 
+#include "PersonList.h"
 #include "RegistrarEmployee.h"
 
 using namespace std;
@@ -14,80 +15,75 @@ RegistrarEmployee::~RegistrarEmployee() {
 
 }
 
-string RegistrarEmployee::sendFName() { //Displays to user that data for fName was sent.
+string RegistrarEmployee::sendFName() {
 	std::cout << "User First Name " << fName << " Sent" << std::endl;
 	return(fName);
 }
 
-string RegistrarEmployee::sendLName() { //Displays to user that data for lName was sent.
+string RegistrarEmployee::sendLName() {
 	std::cout << "User Last Name " << lName << " Sent" << std::endl;
 	return(lName);
 }
 
-string RegistrarEmployee::sendEmail() { //Displays to user that data for email was sent.
+string RegistrarEmployee::sendEmail() {
 	std::cout << "User Email " << email << " Sent" << std::endl;
 	return(email);
 }
 
-string RegistrarEmployee::sendSSN() { //Displays to user that data for ssn was sent.
+string RegistrarEmployee::sendSSN() {
 	std::cout << "User Social Security Number " << ssn << " Sent" << std::endl;
 	return(ssn);
 }
 
-string RegistrarEmployee::sendAddress() { //Displays to user that data for address was sent.
+string RegistrarEmployee::sendAddress() {
 	std::cout << "User Address " << address << " Sent" << std::endl;
 	return(address);
 }
 
-string RegistrarEmployee::sendCity() { //Displays to user that data for city was sent.
+string RegistrarEmployee::sendCity() {
 	std::cout << "User City " << city << " Sent" << std::endl;
 	return(city);
 }
 
-string RegistrarEmployee::sendState() { //Displays to user that data for state was sent.
+string RegistrarEmployee::sendState() {
 	std::cout << "User State " << state << " Sent" << std::endl;
 	return(state);
 }
 
-string RegistrarEmployee::sendState() {
-	std::cout << "User zipcode " << zipcode << " Sent" << std::endl;
-	return(zipcode);
-}
-
-string RegistrarEmployee::sendGender() { //Displays to user that data for gender was sent.
+string RegistrarEmployee::sendGender() {
 	std::cout << "User Gender " << gender << " Sent" << std::endl;
 	return(gender);
 }
 
-void RegistrarEmployee::recieveFName(string newFName) { //Inserts new fname into appropriate location.
+void RegistrarEmployee::receiveFName(string newFName) {
 	fName = newFName;
 }
 
-void RegistrarEmployee::recieveLName(string newLName) { //Inserts new lname into appropriate location.
+void RegistrarEmployee::receiveLName(string newLName) {
 	lName = newLName;
 }
 
-void RegistrarEmployee::recieveEmail(string newEmail) { //Inserts new email into appropriate location.
+void RegistrarEmployee::receiveEmail(string newEmail) {
 	email = newEmail;
 }
 
-void RegistrarEmployee::recieveSSN(string newSSN) { //Inserts new ssn into appropriate location.
+void RegistrarEmployee::receiveSSN(string newSSN) {
 	ssn = newSSN;
 }
 
-void RegistrarEmployee::recieveAddress(string newAddress) { //Inserts new address into appropriate location.
+void RegistrarEmployee::receiveAddress(string newAddress) {
 	address = newAddress;
 }
 
-void RegistrarEmployee::recieveCity(string newCity) { //Inserts new city into appropriate location.
+void RegistrarEmployee::receiveCity(string newCity) {
 	city = newCity;
 }
 
-void RegistrarEmployee::recieveState(string newState) { //Inserts new state into appropriate location.
+void RegistrarEmployee::receiveState(string newState) {
 	state = newState;
 }
 
-void RegistrarEmployee::recieveGender(string newGender) { //Inserts new gender into appropriate location.
+void RegistrarEmployee::receiveGender(string newGender) {
 	gender = newGender;
 }
 
@@ -111,19 +107,18 @@ string RegistrarEmployee::sendToGovAddress() { //Sends user data to Governemnt
 	return(address);
 }
 
-string RegistrarEmployee::sendToGovCity() { //Sends user data to Governemnt
+string RegistrarEmployee::sendToGovCity(int ssn) { //Sends user data to Governemnt
+	PersonList person;
+	city = person.getCity(ssn);
 	return(city);
 }
 
-string RegistrarEmployee::sendToGovState() { //Sends user data to Governemnt
+string RegistrarEmployee::sendToGovState(int ssn) { //Sends user data to Governemnt
+	PersonList person;
+	state = person.getState(ssn);
 	return(state);
-}
-
-string RegistrarEmployee::sendToGovZipcode() {
-	return(zipcode); 
 }
 
 string RegistrarEmployee::sendToGovGender() { //Sends user data to Governemnt
 	return(gender);
 }
-
