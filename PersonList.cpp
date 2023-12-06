@@ -101,9 +101,13 @@ bool PersonList::findPerson(int ssn) {
 
 	if (found) {
 		cout << "Voter with the SSN '" << ssn << "' exists in our database.\n";
+		cin.clear();
+		cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
 	}
 	else {
 		cout << "Voter with the SSN '" << ssn << "' doesn't exist in our database.\n";
+		cin.clear();
+		cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
 	}
 
 	return found;
