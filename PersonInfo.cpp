@@ -11,14 +11,14 @@ PersonInfo::PersonInfo() {
 	fName = "No First Name";
 	lName = "No Last Name";
 	email = "No Email";
-	ssn = "No Social Security Number";
+	ssn = 000000000;
 	address = "No Address";
 	city = "No City";
 	state = "No State";
 	gender = "No Gender";
 }
 
-PersonInfo::PersonInfo(string fName, string lName, string email, string ssn, string address, string city, string state, string gender) : fName{ fName }, lName{ lName }, email{ email }, ssn{ ssn }, address{ address }, city{ city }, state{ state }, gender{ gender } {
+PersonInfo::PersonInfo(string fName, string lName, string email, int ssn, string address, string city, string state, string gender) : fName{ fName }, lName{ lName }, email{ email }, ssn{ ssn }, address{ address }, city{ city }, state{ state }, gender{ gender } {
 
 }
 
@@ -38,7 +38,7 @@ string PersonInfo::getEmail() {
 	return(email);
 }
 
-string PersonInfo::getSSN() {
+int PersonInfo::getSSN() {
 	return(ssn);
 }
 
@@ -73,9 +73,44 @@ void PersonInfo::modifyEmail() {
 	std::getline(std::cin, email);
 }
 void PersonInfo::modifySSN() {
-	std::cout << "Enter your Social Security Number: " << std::endl;
-	std::getline(std::cin, ssn);
+	bool temp = true;
+
+	do {
+		std::cout << "Enter your Social Security Number: " << std::endl;
+		std::cin >> ssn;
+
+		if (cin.fail()) {
+			cin.clear();
+			cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
+			cout << "\n\tOnly integer input please. \n";
+		}
+		else if (ssn > 999999999) {
+			cin.clear();
+			cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
+			cout << "\n\tSSN is longer than 9 digits. \n";
+			cout << "\n\tSSN must have a 9 digit length. \n";
+		}
+		else if (ssn < 100000000) {
+			cin.clear();
+			cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
+			cout << "\n\tSSN is shorter than 9 digits. \n";
+			cout << "\n\tSSN must have a 9 digit length. \n";
+		}
+		else if ((ssn >= 100000000) && (ssn <= 999999999)) {
+			cout << "\n\tValid SSN. \n";
+			cin.clear();
+			cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
+			temp = false;
+		}
+		else {
+			cout << "\n\tUnknown Error. Invalid SSN. \n";
+			cin.clear();
+			cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
+		}
+	} while (temp);
+	
 }
+
 void PersonInfo::modifyAddress() {
 	std::cout << "Enter your Address: " << std::endl;
 	std::getline(std::cin, address);
