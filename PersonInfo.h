@@ -8,7 +8,7 @@ private:
 	string fName;
 	string lName;
 	string email;
-	string ssn;
+	int ssn;
 	string address;
 	string city;
 	string state;
@@ -16,13 +16,13 @@ private:
 
 public:
 	PersonInfo();
-	PersonInfo(string fName, string lName, string email, string ssn, string address, string city, string state, string gender);
+	PersonInfo(string fName, string lName, string email, int ssn, string address, string city, string state, string gender);
 	~PersonInfo();
 
 	string getFName();
 	string getLName();
 	string getEmail();
-	string getSSN();
+	int getSSN();
 	string getAddress();
 	string getCity();
 	string getState();
